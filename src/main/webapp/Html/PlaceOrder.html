@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Payment</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+
+
+
+
+    <form id="payment-form">
+        <input type="text" placeholder="Name" id="name">
+        <input type="email" placeholder="Email" id="email">
+        <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+        </div>
+        <button type="submit">Pay Now</button>
+    </form>
+
+    <script>
+        // Create a Stripe client
+        var stripe = Stripe('your_stripe_publishable_key');
+
+        // Create an instance of Elements
+        var elements = stripe.elements();
+
+        // Create an instance of the card Element
+        var card = elements.create('card');
+
+        // Add an instance of the card Element into the `card-element` div
+        card.mount('#card-element');
+
+        // Handle form submission
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    // Inform the user if there was an error
+                    console.error(result.error.message);
+                } else {
+                    // Send the token to your server
+                    // You would typically send the token to your server using an AJAX request
+                    console.log(result.token);
+                    // Then process the payment on your server
+                }
+            });
+        });
+    </script>
+
+
+</body>
+</html>
