@@ -34,13 +34,14 @@
 
 ---
  
- Future Improvements
-Payment gateway integration (Razorpay/Stripe)
+## Future Improvements
 
-Coupon and discount system
+> Payment gateway integration (Razorpay/Stripe)
 
-Order delivery tracking
+> Coupon and discount system
 
-Product ratings & reviews
+> Order delivery tracking
 
-JWT/Token-based login (Spring Security in future)
+> Product ratings & reviews
+
+> JWT/Token-based login (Spring Security in future)
